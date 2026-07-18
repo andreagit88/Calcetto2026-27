@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif !important;
+    margin: 20px !important;
+    background-color: #f4f4f4 !important;
+}
+
+h1 {
+    text-align: center !important;
+    color: #333 !important;
+}
+
+h2 {
+    color: #555 !important;
+    margin-top: 20px !important;
+}
+
+.classifica {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.classifica li {
+    font-size: 18px !important;
+    padding: 5px 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    border-bottom: 1px solid #ccc !important;
+}
+
+.numero {
+    width: 30px !important;
+    text-align: left !important;
+    margin-right: 10px !important;
+}
+
+.nome {
+    flex-grow: 1 !important;
+    text-align: left !important;
+}
+
+.presenze,
+.assist,
+.gol {
+    font-weight: bold !important;
+    text-align: right !important;
+    width: 30px !important;
+}
+
+.regolamento {
+    list-style-type: disc !important;
+    margin-top: 20px !important;
+    padding-left: 20px !important;
+}
