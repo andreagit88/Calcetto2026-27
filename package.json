@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "aggiorna": "node tools/aggiorna.js",
     "test": "node --test"
   }
 }
