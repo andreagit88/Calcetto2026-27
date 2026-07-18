@@ -1,0 +1,5 @@
+Data: 2026-09-15
+Presenti: Andrea, Max, Valerio
+Vittoria: Andrea, Max
+Gol: Andrea 2, Max 1
+Assist: Valerio 2
