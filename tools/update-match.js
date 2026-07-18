@@ -32,6 +32,12 @@ const RANKING_LABELS = [
   ["assist", "Assist"],
   ["gol", "Gol"]
 ];
+const EMPTY_MATCH_TEMPLATE = `Data:
+Presenti:
+Vittoria:
+Gol:
+Assist:
+`;
 
 function fail(message) {
   throw new ValidationError(message);
@@ -210,6 +216,17 @@ async function applyUpdate(root, data, now) {
   }
 }
 
+async function resetMatchFile(file, now) {
+  const temporary = path.join(path.dirname(file), `.partita-${process.pid}-${now.getTime()}.tmp`);
+  await writeExclusive(temporary, EMPTY_MATCH_TEMPLATE);
+  try {
+    await rename(temporary, file);
+  } catch (error) {
+    await unlink(temporary).catch(() => {});
+    throw error;
+  }
+}
+
 export async function runUpdate({ root, args, output = console.log, now = () => new Date() }) {
   const [mode, suppliedCode, ...extra] = args;
   if (extra.length > 0 || !["--preview", "--apply"].includes(mode)) {
@@ -225,9 +242,12 @@ export async function runUpdate({ root, args, output = console.log, now = () => 
     return { mode, code: data.code, match: data.match };
   }
   if (suppliedCode !== data.code) fail("Codice anteprima non valido: uno o più file sono cambiati dopo l'anteprima.");
-  const { backup, storedMatch } = await applyUpdate(root, data, now());
+  const appliedAt = now();
+  const { backup, storedMatch } = await applyUpdate(root, data, appliedAt);
+  await resetMatchFile(data.files.match, appliedAt);
   output(`Partita ${data.match.id} registrata.`);
   output(`Backup creato: ${path.relative(root, backup)}`);
+  output("✓ partita.txt ripristinato e pronto per la prossima partita.");
   return { mode, match: storedMatch, backup };
 }
 

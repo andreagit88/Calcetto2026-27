@@ -31,6 +31,12 @@ Vittoria: Andrea, Max
 Gol: Andrea 2, Max 1
 Assist: Valerio 2
 `;
+const EMPTY_MATCH_TEMPLATE = `Data:
+Presenti:
+Vittoria:
+Gol:
+Assist:
+`;
 
 async function fixture(matchText = VALID_MATCH) {
   const root = await mkdtemp(path.join(os.tmpdir(), "calcetto-test-"));
@@ -84,14 +90,33 @@ test("--apply crea un backup univoco e aggiunge atomicamente la partita", async 
   t.after(() => rm(root, { recursive: true, force: true }));
   const preview = await runUpdate({ root, args: ["--preview"], output: () => {} });
   const fixedDate = new Date("2026-09-15T22:00:00Z");
-  const result = await runUpdate({ root, args: ["--apply", preview.code], output: () => {}, now: () => fixedDate });
+  const lines = [];
+  const result = await runUpdate({ root, args: ["--apply", preview.code], output: (line) => lines.push(line), now: () => fixedDate });
   const history = JSON.parse(await readFile(path.join(root, "data", "matches.json"), "utf8"));
   assert.equal(history.matches.length, 1);
   assert.equal(history.matches[0].updatedAt, fixedDate.toISOString());
   assert.equal(result.match.updatedAt, fixedDate.toISOString());
   assert.equal(await readFile(result.backup, "utf8"), EMPTY_HISTORY);
   assert.equal(path.basename(result.backup), "matches-20260915T220000Z.json");
+  assert.equal(await readFile(path.join(root, "partita.txt"), "utf8"), EMPTY_MATCH_TEMPLATE);
+  assert.equal(lines.at(-1), "✓ partita.txt ripristinato e pronto per la prossima partita.");
   assert.deepEqual((await readdir(path.join(root, "data"))).sort(), ["backups", "matches.json", "players.json"]);
+});
+
+test("un errore durante il backup non modifica partita.txt o matches.json", async (t) => {
+  const root = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const preview = await runUpdate({ root, args: ["--preview"], output: () => {} });
+  const before = await snapshot(root);
+  await writeFile(path.join(root, "data", "backups"), "impedisce la creazione della cartella");
+
+  await assert.rejects(
+    runUpdate({ root, args: ["--apply", preview.code], output: () => {} }),
+    /EEXIST|exist/i
+  );
+
+  assert.equal(await readFile(path.join(root, "partita.txt"), "utf8"), before.match);
+  assert.equal(await readFile(path.join(root, "data", "matches.json"), "utf8"), before.history);
 });
 
 test("--preview non crea updatedAt", async (t) => {

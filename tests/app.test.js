@@ -15,8 +15,8 @@ test("usa updatedAt dell'ultima partita per aggiornare la scritta", () => {
   assert.equal(element.textContent, "Classifica aggiornata il 15/09/2026 alle ore 22:05");
 });
 
-test("con storico vuoto conserva la scritta attuale", () => {
+test("con storico vuoto mostra che il campionato non è ancora iniziato", () => {
   const element = { textContent: "Classifica aggiornata manualmente" };
   updateLastUpdatedLabel([], element);
-  assert.equal(element.textContent, "Classifica aggiornata manualmente");
+  assert.equal(element.textContent, "Campionato non ancora iniziato");
 });
