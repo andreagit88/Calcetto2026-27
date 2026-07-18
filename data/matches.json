@@ -20,6 +20,31 @@
         "Valerio": 2
       },
       "updatedAt": "2026-07-18T19:55:54.181Z"
+    },
+    {
+      "id": "2026-09-22-5fbf534847fa",
+      "date": "2026-09-22",
+      "present": [
+        "Andrea",
+        "Max",
+        "Valerio",
+        "Alex",
+        "Matteo"
+      ],
+      "winners": [
+        "Andrea",
+        "Max"
+      ],
+      "goals": {
+        "Andrea": 3,
+        "Max": 2,
+        "Alex": 1
+      },
+      "assists": {
+        "Matteo": 2,
+        "Andrea": 1
+      },
+      "updatedAt": "2026-07-18T20:25:12.498Z"
     }
   ]
 }
