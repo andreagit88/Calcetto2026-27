@@ -1,5 +1,5 @@
-Data:
-Presenti:
-Vittoria:
-Gol:
-Assist:
+Data: 2026-07-18
+Presenti: Andrea, Alex, Cassano, Cicalone, Daniele, Dario, Emanuele, Eros, Max, Matteo
+Vittoria: Andrea, Alex, Cassano, Cicalone, Daniele
+Gol: Andrea 2, Alex 1, Eros 2, Matteo 1
+Assist: Cassano 1, Daniele 2, Max 1
