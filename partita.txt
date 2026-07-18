@@ -1,5 +1,5 @@
-Data: 2026-09-22
-Presenti: Andrea, Max, Valerio, Alex, Matteo
-Vittoria: Andrea, Max
-Gol: Andrea 3, Max 2, Alex 1
-Assist: Matteo 2, Andrea 1
+Data:
+Presenti:
+Vittoria:
+Gol:
+Assist:
