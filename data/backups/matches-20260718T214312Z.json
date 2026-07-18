@@ -34,28 +34,6 @@
         "Max": 1
       },
       "updatedAt": "2026-07-18T21:17:52.446Z"
-    },
-    {
-      "id": "2026-07-25-5990f3ed2575",
-      "date": "2026-07-25",
-      "present": [
-        "Andrea",
-        "Alex",
-        "Cassano",
-        "Dario"
-      ],
-      "winners": [
-        "Andrea",
-        "Cassano"
-      ],
-      "goals": {
-        "Andrea": 3,
-        "Alex": 1
-      },
-      "assists": {
-        "Cassano": 2
-      },
-      "updatedAt": "2026-07-18T21:43:12.033Z"
     }
   ]
 }
