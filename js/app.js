@@ -37,15 +37,15 @@ export function updateLastUpdatedLabel(matches, element) {
     `Classifica aggiornata il ${formatUpdatedAt(latest.updatedAt)}`;
 }
 
-function renderRanking(stat, entries) {
-  const list = document.getElementById(`classifica-${stat}`);
-  const fragment = document.createDocumentFragment();
+function renderRanking(documentRoot, stat, entries) {
+  const list = documentRoot.getElementById(`classifica-${stat}`);
+  const fragment = documentRoot.createDocumentFragment();
 
   entries.forEach((entry, index) => {
-    const item = document.createElement("li");
-    const position = document.createElement("span");
-    const name = document.createElement("span");
-    const value = document.createElement("span");
+    const item = documentRoot.createElement("li");
+    const position = documentRoot.createElement("span");
+    const name = documentRoot.createElement("span");
+    const value = documentRoot.createElement("span");
 
     position.className = "numero";
     name.className = "nome";
@@ -62,8 +62,8 @@ function renderRanking(stat, entries) {
   list.replaceChildren(fragment);
 }
 
-async function loadJson(path) {
-  const response = await fetch(path, {
+async function loadJson(path, fetchJson) {
+  const response = await fetchJson(path, {
     cache: "no-store"
   });
 
@@ -76,10 +76,10 @@ async function loadJson(path) {
   return response.json();
 }
 
-async function main() {
+export async function main(documentRoot, fetchJson) {
   const [playersData, historyData] = await Promise.all([
-    loadJson("data/players.json"),
-    loadJson("data/matches.json")
+    loadJson("data/players.json", fetchJson),
+    loadJson("data/matches.json", fetchJson)
   ]);
 
   const players = validatePlayers(playersData);
@@ -87,21 +87,21 @@ async function main() {
 
   updateLastUpdatedLabel(
     matches,
-    document.querySelector(".aggiornamento")
+    documentRoot.querySelector(".aggiornamento")
   );
 
   const rankings = calculateRankings(players, matches);
 
   for (const stat of sections) {
-    renderRanking(stat, rankings[stat]);
+    renderRanking(documentRoot, stat, rankings[stat]);
   }
 
-  revealDynamicContent(document);
+  revealDynamicContent(documentRoot);
 }
 
 export function revealDynamicContent(documentRoot) {
   const content = documentRoot.getElementById("contenuto-dinamico");
-  if (content) content.hidden = false;
+  if (content) content.removeAttribute("hidden");
 }
 
 export function showLoadingError(documentRoot) {
@@ -113,7 +113,7 @@ export function showLoadingError(documentRoot) {
 }
 
 if (typeof document !== "undefined") {
-  main().catch((error) => {
+  main(document, fetch).catch((error) => {
     console.error("Classifiche non disponibili:", error);
     showLoadingError(document);
   });

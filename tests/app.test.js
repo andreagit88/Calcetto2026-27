@@ -3,10 +3,51 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
   formatUpdatedAt,
+  main,
   revealDynamicContent,
   showLoadingError,
   updateLastUpdatedLabel
 } from "../js/app.js";
+
+function fakeElement(attributes = []) {
+  return {
+    attributes: new Set(attributes),
+    children: [],
+    textContent: "",
+    append(...children) {
+      this.children.push(...children);
+    },
+    hasAttribute(name) {
+      return this.attributes.has(name);
+    },
+    removeAttribute(name) {
+      this.attributes.delete(name);
+    },
+    replaceChildren(fragment) {
+      this.children = [...fragment.children];
+    }
+  };
+}
+
+function fakeDocument() {
+  const elements = Object.fromEntries([
+    ["contenuto-dinamico", fakeElement(["hidden"])],
+    ...["presenze", "vittorie", "assist", "gol"].map((stat) => [
+      `classifica-${stat}`,
+      fakeElement()
+    ])
+  ]);
+  const updatedAt = fakeElement();
+
+  return {
+    elements,
+    updatedAt,
+    createDocumentFragment: () => fakeElement(),
+    createElement: () => fakeElement(),
+    getElementById: (id) => elements[id],
+    querySelector: (selector) => selector === ".aggiornamento" ? updatedAt : null
+  };
+}
 
 test("formatta updatedAt in italiano nel fuso di Roma", () => {
   assert.equal(formatUpdatedAt("2026-09-15T20:05:00.000Z"), "15/09/2026 alle ore 22:05");
@@ -37,16 +78,38 @@ test("il contenuto dinamico parte nascosto e include tutte le classifiche", asyn
   }
   assert.match(dynamicContent[1], /class="aggiornamento"/u);
   assert.ok(html.indexOf("<h2>Regolamento</h2>") > dynamicContent.index + dynamicContent[0].length);
+  assert.match(html, /<script type="module" src="js\/app\.js\?v=2"><\/script>/u);
 });
 
-test("rende visibile tutto il contenuto dinamico in una sola operazione", () => {
-  const content = { hidden: true };
+test("rimuove realmente l'attributo hidden dal contenuto dinamico", () => {
+  const content = fakeElement(["hidden"]);
   revealDynamicContent({ getElementById: () => content });
-  assert.equal(content.hidden, false);
+  assert.equal(content.hasAttribute("hidden"), false);
+});
+
+test("main carica i due JSON, renderizza le quattro classifiche e poi rimuove hidden", async () => {
+  const documentRoot = fakeDocument();
+  const requested = [];
+  const responses = {
+    "data/players.json": { players: ["Andrea"] },
+    "data/matches.json": { matches: [] }
+  };
+  const fetchJson = async (path) => {
+    requested.push(path);
+    return { ok: true, json: async () => responses[path] };
+  };
+
+  await main(documentRoot, fetchJson);
+
+  assert.deepEqual(requested.sort(), ["data/matches.json", "data/players.json"]);
+  for (const stat of ["presenze", "vittorie", "assist", "gol"]) {
+    assert.equal(documentRoot.elements[`classifica-${stat}`].children.length, 1);
+  }
+  assert.equal(documentRoot.elements["contenuto-dinamico"].hasAttribute("hidden"), false);
 });
 
 test("in caso di errore mostra un messaggio e non lascia la sezione nascosta", () => {
-  const content = { hidden: true };
+  const content = fakeElement(["hidden"]);
   const label = { textContent: "testo precedente" };
   const documentRoot = {
     getElementById: () => content,
@@ -56,5 +119,5 @@ test("in caso di errore mostra un messaggio e non lascia la sezione nascosta", (
   showLoadingError(documentRoot);
 
   assert.equal(label.textContent, "Classifiche temporaneamente non disponibili");
-  assert.equal(content.hidden, false);
+  assert.equal(content.hasAttribute("hidden"), false);
 });
