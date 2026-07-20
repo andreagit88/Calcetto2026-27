@@ -95,10 +95,26 @@ async function main() {
   for (const stat of sections) {
     renderRanking(stat, rankings[stat]);
   }
+
+  revealDynamicContent(document);
+}
+
+export function revealDynamicContent(documentRoot) {
+  const content = documentRoot.getElementById("contenuto-dinamico");
+  if (content) content.hidden = false;
+}
+
+export function showLoadingError(documentRoot) {
+  const label = documentRoot.querySelector(".aggiornamento");
+  if (label) {
+    label.textContent = "Classifiche temporaneamente non disponibili";
+  }
+  revealDynamicContent(documentRoot);
 }
 
 if (typeof document !== "undefined") {
   main().catch((error) => {
     console.error("Classifiche non disponibili:", error);
+    showLoadingError(document);
   });
 }
