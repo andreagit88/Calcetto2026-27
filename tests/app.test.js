@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import {
   formatUpdatedAt,
   main,
-  revealDynamicContent,
+  revealPage,
   showLoadingError,
   updateLastUpdatedLabel
 } from "../js/app.js";
@@ -31,7 +31,7 @@ function fakeElement(attributes = []) {
 
 function fakeDocument() {
   const elements = Object.fromEntries([
-    ["contenuto-dinamico", fakeElement(["hidden"])],
+    ["contenuto-dinamico", fakeElement()],
     ...["presenze", "vittorie", "assist", "gol"].map((stat) => [
       `classifica-${stat}`,
       fakeElement()
@@ -40,6 +40,7 @@ function fakeDocument() {
   const updatedAt = fakeElement();
 
   return {
+    body: fakeElement(["hidden"]),
     elements,
     updatedAt,
     createDocumentFragment: () => fakeElement(),
@@ -68,26 +69,29 @@ test("con storico vuoto mostra che il campionato non è ancora iniziato", () => 
   assert.equal(element.textContent, "Campionato non ancora iniziato");
 });
 
-test("il contenuto dinamico parte nascosto e include tutte le classifiche", async () => {
+test("l'intera pagina parte nascosta e include titolo, classifiche e regolamento", async () => {
   const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-  const dynamicContent = html.match(/<section id="contenuto-dinamico" hidden>([\s\S]*?)<\/section>/u);
+  const body = html.match(/<body hidden>([\s\S]*?)<\/body>/u);
+  const dynamicContent = html.match(/<section id="contenuto-dinamico">([\s\S]*?)<\/section>/u);
 
+  assert.ok(body);
   assert.ok(dynamicContent);
+  assert.match(body[1], /<h1>Calcetto 2026\/27<\/h1>/u);
   for (const stat of ["presenze", "vittorie", "assist", "gol"]) {
     assert.match(dynamicContent[1], new RegExp(`id="classifica-${stat}"`, "u"));
   }
   assert.match(dynamicContent[1], /class="aggiornamento"/u);
-  assert.ok(html.indexOf("<h2>Regolamento</h2>") > dynamicContent.index + dynamicContent[0].length);
-  assert.match(html, /<script type="module" src="js\/app\.js\?v=2"><\/script>/u);
+  assert.match(body[1], /<h2>Regolamento<\/h2>/u);
+  assert.match(html, /<script type="module" src="js\/app\.js\?v=3"><\/script>/u);
 });
 
-test("rimuove realmente l'attributo hidden dal contenuto dinamico", () => {
-  const content = fakeElement(["hidden"]);
-  revealDynamicContent({ getElementById: () => content });
-  assert.equal(content.hasAttribute("hidden"), false);
+test("rimuove realmente hidden dall'intera pagina in una sola operazione", () => {
+  const body = fakeElement(["hidden"]);
+  revealPage({ body });
+  assert.equal(body.hasAttribute("hidden"), false);
 });
 
-test("main carica i due JSON, renderizza le quattro classifiche e poi rimuove hidden", async () => {
+test("main carica i due JSON, renderizza le quattro classifiche e poi mostra tutta la pagina", async () => {
   const documentRoot = fakeDocument();
   const requested = [];
   const responses = {
@@ -105,19 +109,19 @@ test("main carica i due JSON, renderizza le quattro classifiche e poi rimuove hi
   for (const stat of ["presenze", "vittorie", "assist", "gol"]) {
     assert.equal(documentRoot.elements[`classifica-${stat}`].children.length, 1);
   }
-  assert.equal(documentRoot.elements["contenuto-dinamico"].hasAttribute("hidden"), false);
+  assert.equal(documentRoot.body.hasAttribute("hidden"), false);
 });
 
-test("in caso di errore mostra un messaggio e non lascia la sezione nascosta", () => {
-  const content = fakeElement(["hidden"]);
+test("in caso di errore mostra un messaggio e non lascia la pagina nascosta", () => {
+  const body = fakeElement(["hidden"]);
   const label = { textContent: "testo precedente" };
   const documentRoot = {
-    getElementById: () => content,
+    body,
     querySelector: () => label
   };
 
   showLoadingError(documentRoot);
 
   assert.equal(label.textContent, "Classifiche temporaneamente non disponibili");
-  assert.equal(content.hasAttribute("hidden"), false);
+  assert.equal(body.hasAttribute("hidden"), false);
 });

@@ -96,12 +96,11 @@ export async function main(documentRoot, fetchJson) {
     renderRanking(documentRoot, stat, rankings[stat]);
   }
 
-  revealDynamicContent(documentRoot);
+  revealPage(documentRoot);
 }
 
-export function revealDynamicContent(documentRoot) {
-  const content = documentRoot.getElementById("contenuto-dinamico");
-  if (content) content.removeAttribute("hidden");
+export function revealPage(documentRoot) {
+  documentRoot.body?.removeAttribute("hidden");
 }
 
 export function showLoadingError(documentRoot) {
@@ -109,7 +108,7 @@ export function showLoadingError(documentRoot) {
   if (label) {
     label.textContent = "Classifiche temporaneamente non disponibili";
   }
-  revealDynamicContent(documentRoot);
+  revealPage(documentRoot);
 }
 
 if (typeof document !== "undefined") {
