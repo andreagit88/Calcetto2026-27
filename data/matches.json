@@ -1,3 +1,40 @@
 {
-  "matches": []
+  "matches": [
+    {
+      "id": "2026-09-06-e1cb637dabc9",
+      "date": "2026-09-06",
+      "present": [
+        "Andrea",
+        "Alex",
+        "Matteo",
+        "Fabio",
+        "Cicalone",
+        "Dario",
+        "Emanuele",
+        "Peppe",
+        "Daniele",
+        "Max"
+      ],
+      "winners": [
+        "Andrea",
+        "Alex",
+        "Matteo",
+        "Fabio",
+        "Cicalone"
+      ],
+      "goals": {
+        "Andrea": 3,
+        "Max": 2,
+        "Alex": 2,
+        "Matteo": 1
+      },
+      "assists": {
+        "Andrea": 1,
+        "Dario": 2,
+        "Matteo": 2,
+        "Fabio": 1
+      },
+      "updatedAt": "2026-09-06T09:00:41.667Z"
+    }
+  ]
 }
