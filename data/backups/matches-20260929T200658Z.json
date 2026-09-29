@@ -75,46 +75,6 @@
         "Alex": 1
       },
       "updatedAt": "2026-09-22T20:00:11.109Z"
-    },
-    {
-      "id": "2026-09-29-60e554a026fc",
-      "date": "2026-09-29",
-      "present": [
-        "Max",
-        "Eros",
-        "Daniele",
-        "Cicalone",
-        "Dario",
-        "Cassano",
-        "Emanuele",
-        "Alex",
-        "Andrea",
-        "Matteo"
-      ],
-      "winners": [
-        "Max",
-        "Eros",
-        "Daniele",
-        "Cicalone",
-        "Dario"
-      ],
-      "goals": {
-        "Max": 2,
-        "Cicalone": 1,
-        "Dario": 4,
-        "Cassano": 1,
-        "Emanuele": 1,
-        "Alex": 2,
-        "Andrea": 1
-      },
-      "assists": {
-        "Max": 2,
-        "Eros": 1,
-        "Cicalone": 3,
-        "Emanuele": 2,
-        "Matteo": 1
-      },
-      "updatedAt": "2026-09-29T20:06:58.993Z"
     }
   ]
 }
