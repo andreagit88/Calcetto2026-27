@@ -161,7 +161,7 @@
       "updatedAt": "2026-10-06T20:43:57.848Z"
     },
     {
-      "id": "2026-10-13-b544faa795a4",
+      "id": "2026-10-13-b909c08f5a49",
       "date": "2026-10-13",
       "present": [
         "Max",
@@ -186,6 +186,7 @@
         "Matteo": 2
       },
       "assists": {
+        "Cicalone": 1,
         "Fabio": 1,
         "Valerio": 2,
         "Daniele": 1,
