@@ -194,6 +194,41 @@
         "Alex": 2
       },
       "updatedAt": "2026-10-13T20:18:40.579Z"
+    },
+    {
+      "id": "2026-10-21-57978395651a",
+      "date": "2026-10-21",
+      "present": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Daniele",
+        "Peppe",
+        "Andrea",
+        "Alex",
+        "Matteo"
+      ],
+      "winners": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Daniele"
+      ],
+      "goals": {
+        "Fabio": 1,
+        "Daniele": 3,
+        "Peppe": 1,
+        "Andrea": 1,
+        "Alex": 2,
+        "Matteo": 1
+      },
+      "assists": {
+        "Max": 1,
+        "Fabio": 1,
+        "Andrea": 3,
+        "Matteo": 1
+      },
+      "updatedAt": "2026-10-21T20:46:04.076Z"
     }
   ]
 }
