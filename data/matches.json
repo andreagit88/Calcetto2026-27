@@ -229,6 +229,47 @@
         "Matteo": 1
       },
       "updatedAt": "2026-10-21T20:46:04.076Z"
+    },
+    {
+      "id": "2026-10-28-ba0df61203c6",
+      "date": "2026-10-28",
+      "present": [
+        "Max",
+        "Fabio",
+        "Cicalone",
+        "Dario",
+        "Cassano",
+        "Alex",
+        "Stefano",
+        "Andrea"
+      ],
+      "winners": [
+        "Cassano",
+        "Alex",
+        "Stefano",
+        "Andrea"
+      ],
+      "goals": {
+        "Max": 1,
+        "Fabio": 2,
+        "Cicalone": 2,
+        "Dario": 1,
+        "Cassano": 1,
+        "Alex": 3,
+        "Stefano": 4,
+        "Andrea": 1
+      },
+      "assists": {
+        "Max": 2,
+        "Fabio": 1,
+        "Cicalone": 1,
+        "Dario": 1,
+        "Cassano": 1,
+        "Alex": 2,
+        "Stefano": 1,
+        "Andrea": 1
+      },
+      "updatedAt": "2026-10-28T21:33:58.956Z"
     }
   ]
 }

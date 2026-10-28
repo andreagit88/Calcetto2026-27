@@ -1,0 +1,234 @@
+{
+  "matches": [
+    {
+      "id": "2026-09-15-7308b9c4d516",
+      "date": "2026-09-15",
+      "present": [
+        "Emanuele",
+        "Andrea",
+        "Fabio",
+        "Cicalone",
+        "Max",
+        "Cassano",
+        "Daniele",
+        "Alex",
+        "Dario",
+        "Matteo"
+      ],
+      "winners": [
+        "Cassano",
+        "Daniele",
+        "Alex",
+        "Dario",
+        "Matteo"
+      ],
+      "goals": {
+        "Emanuele": 1,
+        "Cicalone": 1,
+        "Max": 2,
+        "Cassano": 2,
+        "Daniele": 2,
+        "Alex": 3,
+        "Dario": 4,
+        "Matteo": 1
+      },
+      "assists": {
+        "Andrea": 1,
+        "Cassano": 3,
+        "Alex": 3,
+        "Matteo": 2
+      },
+      "updatedAt": "2026-09-15T20:09:18.432Z"
+    },
+    {
+      "id": "2026-09-22-6a3e0cf3c068",
+      "date": "2026-09-22",
+      "present": [
+        "Max",
+        "Valerio",
+        "Fabio",
+        "Cicalone",
+        "Dario",
+        "Cassano",
+        "Emanuele",
+        "Alex",
+        "Andrea",
+        "Matteo"
+      ],
+      "winners": [
+        "Cassano",
+        "Emanuele",
+        "Alex",
+        "Andrea",
+        "Matteo"
+      ],
+      "goals": {
+        "Cicalone": 1,
+        "Dario": 1,
+        "Cassano": 1,
+        "Emanuele": 1,
+        "Alex": 3,
+        "Andrea": 1
+      },
+      "assists": {
+        "Cassano": 1,
+        "Alex": 1
+      },
+      "updatedAt": "2026-09-22T20:00:11.109Z"
+    },
+    {
+      "id": "2026-09-29-60e554a026fc",
+      "date": "2026-09-29",
+      "present": [
+        "Max",
+        "Eros",
+        "Daniele",
+        "Cicalone",
+        "Dario",
+        "Cassano",
+        "Emanuele",
+        "Alex",
+        "Andrea",
+        "Matteo"
+      ],
+      "winners": [
+        "Max",
+        "Eros",
+        "Daniele",
+        "Cicalone",
+        "Dario"
+      ],
+      "goals": {
+        "Max": 2,
+        "Cicalone": 1,
+        "Dario": 4,
+        "Cassano": 1,
+        "Emanuele": 1,
+        "Alex": 2,
+        "Andrea": 1
+      },
+      "assists": {
+        "Max": 2,
+        "Eros": 1,
+        "Cicalone": 3,
+        "Emanuele": 2,
+        "Matteo": 1
+      },
+      "updatedAt": "2026-09-29T20:06:58.993Z"
+    },
+    {
+      "id": "2026-10-06-6cacfd393d56",
+      "date": "2026-10-06",
+      "present": [
+        "Max",
+        "Valerio",
+        "Andrea",
+        "Cicalone",
+        "Dario",
+        "Cassano",
+        "Peppe",
+        "Alex",
+        "Daniele",
+        "Matteo"
+      ],
+      "winners": [
+        "Max",
+        "Valerio",
+        "Andrea",
+        "Cicalone",
+        "Dario"
+      ],
+      "goals": {
+        "Max": 3,
+        "Valerio": 1,
+        "Andrea": 1,
+        "Cicalone": 1,
+        "Dario": 4,
+        "Cassano": 1,
+        "Alex": 4,
+        "Daniele": 4
+      },
+      "assists": {
+        "Max": 1,
+        "Valerio": 2,
+        "Andrea": 3,
+        "Cicalone": 1,
+        "Dario": 1,
+        "Alex": 1,
+        "Daniele": 1,
+        "Matteo": 2
+      },
+      "updatedAt": "2026-10-06T20:43:57.848Z"
+    },
+    {
+      "id": "2026-10-13-b909c08f5a49",
+      "date": "2026-10-13",
+      "present": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Valerio",
+        "Dario",
+        "Daniele",
+        "Andrea",
+        "Stefano",
+        "Alex",
+        "Matteo"
+      ],
+      "winners": [],
+      "goals": {
+        "Max": 2,
+        "Cicalone": 1,
+        "Dario": 3,
+        "Daniele": 2,
+        "Andrea": 1,
+        "Alex": 1,
+        "Matteo": 2
+      },
+      "assists": {
+        "Cicalone": 1,
+        "Fabio": 1,
+        "Valerio": 2,
+        "Daniele": 1,
+        "Andrea": 1,
+        "Alex": 2
+      },
+      "updatedAt": "2026-10-13T20:18:40.579Z"
+    },
+    {
+      "id": "2026-10-21-57978395651a",
+      "date": "2026-10-21",
+      "present": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Daniele",
+        "Peppe",
+        "Andrea",
+        "Alex",
+        "Matteo"
+      ],
+      "winners": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Daniele"
+      ],
+      "goals": {
+        "Fabio": 1,
+        "Daniele": 3,
+        "Peppe": 1,
+        "Andrea": 1,
+        "Alex": 2,
+        "Matteo": 1
+      },
+      "assists": {
+        "Max": 1,
+        "Fabio": 1,
+        "Andrea": 3,
+        "Matteo": 1
+      },
+      "updatedAt": "2026-10-21T20:46:04.076Z"
+    }
+  ]
+}
