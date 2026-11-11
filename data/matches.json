@@ -270,6 +270,44 @@
         "Andrea": 1
       },
       "updatedAt": "2026-10-28T21:33:58.956Z"
+    },
+    {
+      "id": "2026-11-11-820c6f344d9c",
+      "date": "2026-11-11",
+      "present": [
+        "Max",
+        "Cicalone",
+        "Dario",
+        "Daniele",
+        "Fabio",
+        "Alex",
+        "Andrea",
+        "Eros"
+      ],
+      "winners": [
+        "Max",
+        "Cicalone",
+        "Dario",
+        "Daniele",
+        "Fabio"
+      ],
+      "goals": {
+        "Max": 2,
+        "Dario": 1,
+        "Daniele": 3,
+        "Fabio": 1,
+        "Alex": 2,
+        "Andrea": 4,
+        "Eros": 2
+      },
+      "assists": {
+        "Cicalone": 1,
+        "Dario": 3,
+        "Daniele": 2,
+        "Andrea": 1,
+        "Eros": 1
+      },
+      "updatedAt": "2026-11-11T21:16:04.438Z"
     }
   ]
 }
