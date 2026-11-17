@@ -306,6 +306,42 @@
         "Eros": 1
       },
       "updatedAt": "2026-11-11T21:16:04.438Z"
+    },
+    {
+      "id": "2026-11-17-d0f4aba38067",
+      "date": "2026-11-17",
+      "present": [
+        "Max",
+        "Daniele",
+        "Cicalone",
+        "Dario",
+        "Cassano",
+        "Eros",
+        "Alex",
+        "Stefano",
+        "Andrea"
+      ],
+      "winners": [],
+      "goals": {
+        "Daniele": 2,
+        "Cicalone": 1,
+        "Dario": 1,
+        "Eros": 1,
+        "Alex": 2,
+        "Stefano": 1,
+        "Andrea": 2
+      },
+      "assists": {
+        "Daniele": 1,
+        "Cicalone": 1,
+        "Dario": 1,
+        "Cassano": 1,
+        "Eros": 2,
+        "Alex": 1,
+        "Stefano": 1,
+        "Andrea": 1
+      },
+      "updatedAt": "2026-11-17T21:27:09.811Z"
     }
   ]
 }
