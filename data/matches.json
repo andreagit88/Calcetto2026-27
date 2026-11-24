@@ -342,6 +342,38 @@
         "Andrea": 1
       },
       "updatedAt": "2026-11-17T21:27:09.811Z"
+    },
+    {
+      "id": "2026-11-24-b143900a7d4c",
+      "date": "2026-11-24",
+      "present": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Emanuele",
+        "Alex",
+        "Andrea",
+        "Dario"
+      ],
+      "winners": [
+        "Max",
+        "Cicalone",
+        "Fabio",
+        "Emanuele"
+      ],
+      "goals": {
+        "Max": 1,
+        "Cicalone": 2,
+        "Emanuele": 1,
+        "Alex": 1
+      },
+      "assists": {
+        "Max": 2,
+        "Fabio": 2,
+        "Emanuele": 1,
+        "Dario": 1
+      },
+      "updatedAt": "2026-11-24T21:22:54.634Z"
     }
   ]
 }
